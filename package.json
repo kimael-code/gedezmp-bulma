@@ -2,6 +2,17 @@
   "name": "gedezmp-bulma",
   "version": "0.1.0",
   "private": true,
+  "description": "Generador de archivos ZMP para Zimbra",
+  "author": {
+    "email": "mcarball@tutanota.como",
+    "name": "Maikel Carballo",
+    "url": "https://gitlab.com/profemaik"
+  },
+  "bugs": {
+    "url": "https://github.com/kimael-code/gedezmp-bulma/issues"
+  },
+  "homepage": ".",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
