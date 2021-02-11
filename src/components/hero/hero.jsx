@@ -4,7 +4,7 @@ import logo from './assets/gedezmpLogo.png';
  * Banner tipo heroe de Bulma.
  */
 const Hero = () => (
-  <section className="hero is-info">
+  <section className="hero is-primary">
     <div className="hero-head">
       <header className="navbar">
         <div className="container">

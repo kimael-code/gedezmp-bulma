@@ -16,6 +16,7 @@ const CardContent = (props) => {
         validity={props.validity}
         feedback={props.feedback}
         zmprovCmd={props.zmprovCmd}
+        statusCode={props.statusCode}
         isFileImported={props.isFileImported}
         isFileExported={props.isFileExported}
       />
@@ -29,20 +30,38 @@ const CardContent = (props) => {
  * @param {Object} props Propiedades pasadas desde arriba.
  */
 const Card = (props) => {
+  if (props.statusCode === null) {
+    return null;
+  }
+
   return (
-    <div className="card">
-      <header className="card-header has-background-link-light">
-        <p className="card-header-title has-text-black">
-        
-          {props.cardTitle}
-        </p>
-      </header>
-      <div className="card-content">
-        <div className="content">
-          {CardContent}
+    <section className="section">
+      <div className="card">
+        <header className="card-header has-background-link-light">
+          <p
+            className="card-header-title has-text-black"
+            dangerouslySetInnerHTML={{__html: props.cardTitle}}
+          >
+          </p>
+        </header>
+        <div className="card-content">
+          <div className="content">
+            <CardContent
+              fileName={props.fileName}
+              validity={props.validity}
+              feedback={props.feedback}
+              cardTitle={props.cardTitle}
+              zmprovCmd={props.zmprovCmd}
+              statusCode={props.statusCode}
+              tableHead={props.tableHead}
+              tableTrunk={props.tableTrunk}
+              isFileImported={props.isFileImported}
+              isFileExported={props.isFileExported}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  */
 const ButtonSubmit = () => {
   return (
-    <button type="submit" className="button is-primary">
+    <button type="submit" className="button is-link is-light">
       <span className="icon">
         <FontAwesomeIcon icon={faFileExport} />
       </span>

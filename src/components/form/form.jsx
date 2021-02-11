@@ -36,46 +36,48 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFileSubmit} noValidate={true}>
-        <div className="field">
-          <div className={`file has-name is-fullwidth is-right${this.props.validity}`}>
-            <label className="file-label">
-              <input
-                className="file-input"
-                type="file"
-                name="csvInput"
-                accept=".csv"
-                onChange={this.handleFileChange}
-                ref={this.fileInput}
-              />
-              <span className="file-cta">
-                <span className="file-icon">
-                  <FontAwesomeIcon icon={faFileImport} />
-                </span>
-                <span className="file-label">
-                  Importar CSV
+      <section className="section">
+        <form onSubmit={this.handleFileSubmit} noValidate={true}>
+          <div className="field">
+            <div className={`file has-name is-fullwidth is-right${this.props.validity}`}>
+              <label className="file-label">
+                <input
+                  className="file-input"
+                  type="file"
+                  name="csvInput"
+                  accept=".csv"
+                  onChange={this.handleFileChange}
+                  ref={this.fileInput}
+                />
+                <span className="file-cta">
+                  <span className="file-icon">
+                    <FontAwesomeIcon icon={faFileImport} />
                   </span>
-              </span>
-              <span className="file-name">
-                {this.props.fileName}
+                  <span className="file-label">
+                    Importar CSV
+                  </span>
                 </span>
-            </label>
+                <span className="file-name">
+                  {this.props.fileName}
+                </span>
+              </label>
+            </div>
+            <Feedback
+              validity={this.props.validity}
+              feedback={this.props.feedback}
+            />
           </div>
-          <Feedback
-            validity={this.props.validity}
-            feedback={this.props.feedback}
-          />
-        </div>
 
-        <div className="field">
-          <div className="control">
-            {(this.props.isFileImported && !this.props.isFileExported)
-              ? <ButtonSubmit />
-              : null
-            }
+          <div className="field">
+            <div className="control">
+              {(this.props.isFileImported && !this.props.isFileExported)
+                ? <ButtonSubmit />
+                : null
+              }
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </section>
     );
   }
 }

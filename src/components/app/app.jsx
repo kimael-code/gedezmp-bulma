@@ -4,7 +4,6 @@ import { saveAs } from 'file-saver';
 import { getExtension } from '../../utils/get-file-extension';
 import zmprovCmd from '../../utils/zmprov-commands';
 
-
 /**
  * Aplicación Gedezmp.
  */
@@ -17,6 +16,7 @@ class App extends Component {
       feedback: '',
       cardTitle: '',
       zmprovCmd: '',
+      statusCode: null,
       readHeader: null,
       readData: null,
       isFileImported: false,
@@ -30,10 +30,11 @@ class App extends Component {
     if (!fileInput) {
       this.setState({
         fileName: '...',
-        validity: ' is-danger',
+        validity: ' is-info',
         feedback: 'Busque y seleccione un archivo (fichero) de tipo CSV.',
-        cardTitle: '',
+        cardTitle: 'Ayuda',
         zmprovCmd: '',
+        statusCode: 1,
         readHeader: null,
         readData: null,
         isFileImported: false,
@@ -45,8 +46,9 @@ class App extends Component {
         fileName: fileInput.name,
         validity: ' is-danger',
         feedback: 'Archivo (fichero) vacío.',
-        cardTitle: '',
+        cardTitle: 'Problema Encontrado: Archivo (fichero) vacío',
         zmprovCmd: '',
+        statusCode: 2,
         readHeader: null,
         readData: null,
         isFileImported: false,
@@ -57,8 +59,9 @@ class App extends Component {
         fileName: fileInput.name,
         validity: ' is-danger',
         feedback: 'Tipo de archivo (fichero) incorrecto.',
-        cardTitle: '',
+        cardTitle: 'Problema Encontrado: Tipo de archivo (fichero) incorrecto',
         zmprovCmd: '',
+        statusCode: 3,
         readHeader: null,
         readData: null,
         isFileImported: false,
@@ -81,8 +84,9 @@ class App extends Component {
             fileName: fileInput.name,
             validity: ' is-success',
             feedback: 'Archivo (fichero) importado correctamente.',
-            cardTitle: 'Datos Importados',
+            cardTitle: 'Datos Importados desde: <code>' + fileInput.name + '</code>',
             zmprovCmd: header[0],
+            statusCode: 0,
             readHeader: header,
             readData: textByCommas,
             isFileImported: true,
@@ -93,8 +97,9 @@ class App extends Component {
             fileName: fileInput.name,
             validity: ' is-danger',
             feedback: 'Contiene datos no procesables.',
-            cardTitle: 'Problema Encontrado',
+            cardTitle: 'Problema Encontrado: Contiene datos no procesables',
             zmprovCmd: '',
+            statusCode: 4,
             readHeader: null,
             readData: null,
             isFileImported: false,
@@ -119,16 +124,17 @@ class App extends Component {
       this.setState({
         fileName: fileInput.name,
         validity: ' is-success',
-        feedback: 'Este archivo (fichero) ya ha sido procesado correctamente.',
+        feedback: 'Este archivo (fichero) ha sido procesado correctamente.',
         cardTitle: 'Éxito',
         zmprovCmd: head[0],
+        statusCode: 0,
         readHeader: null,
         readData: null,
         isFileImported: true,
         isFileExported: true,
       });
       const blob = new Blob([zmpData], { type: 'text/plain;charset=utf-8;' });
-      saveAs(blob, 'batch-ready.zmp');
+      saveAs(blob, zmprovCmd[head[0]] + 'in-batch.zmp');
     }
   }
 
@@ -142,6 +148,7 @@ class App extends Component {
         feedback={this.state.feedback}
         cardTitle={this.state.cardTitle}
         zmprovCmd={this.state.zmprovCmd}
+        statusCode={this.state.statusCode}
         tableHead={this.state.readHeader}
         tableTrunk={this.state.readData}
         isFileImported={this.state.isFileImported}

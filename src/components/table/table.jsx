@@ -11,7 +11,7 @@ const TableHead = (props) => {
     </th>
   );
   return (
-    <thead className="has-background-info-dark">
+    <thead className="has-background-grey-dark">
       <tr>
         {columns}
       </tr>
