@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Gedezmp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Generador de archivos ZMP para Zimbra.
 
-## Available Scripts
+Es una aplicación web que permite crear un archivo con extensión `.zmp` a partir de un archivo `.csv`. El archivo `.zmp` resultante
+puede ser usado para ejecutar operaciones por lotes, vía terminal, en servidores de correo Zimbra.
 
-In the project directory, you can run:
+## Tabla de Contenidos
 
-### `npm start`
+1. [Construido con](#construido-con)
+2. [Primeros Pasos](#primeros-pasos)
+3. [Uso](#uso)
+4. [Hoja de Ruta](#hoja-de-ruta)
+5. [Contribuir](#contribuir)
+6. [Licencia](#licencia)
+7. [Contacto](#contacto)
+8. [Agradecimientos](#agradecimientos)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Construido con
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* [React](https://reactjs.org/)
+* [Bulma](https://bulma.io/)
 
-### `npm test`
+## Primeros Pasos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Quiero la App
 
-### `npm run build`
+1. Descargue la última versión del archivo comprimido ZIP [gedezmp-compiled-v*](https://github.com/kimael-code/gedezmp-bulma/releases).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Finalizada la descarga, descomprima el archivo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Diríjase a la carpeta descomprimida (por defecto es `build`) y abra `index.html` con un navegador web.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Quiero el Código Fuente
 
-### `npm run eject`
+1. Clone el repositorio
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```sh
+   git clone https://github.com/kimael-code/gedezmp-bulma.git
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Instale las dependencias
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```sh
+   npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Ejecute la app con
 
-## Learn More
+    ```sh
+    npm start
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Uso
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Usar Gedezmp es realmente sencillo:
 
-### Code Splitting
+1. Ejecute la aplicación abriendo el archivo index.html
+2. Haga clic en el botón `Importar CSV` para buscar y seleccionar el archivo CSV a procesar
+3. Haga clic en el botón `Exportar` para obtener el archivo ZMP
+4. Listo, la aplicación generará un archivo `*-in-batch.zmp`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+__Considerar lo siguiente:__
 
-### Analyzing the Bundle Size
+* El archivo CSV seleccionado debe contener una cabecera (primera línea) indicando el comando zmprov (en modo abreviado) seguido de los atributos. Las siguientes líneas contienen los valores respectivos al comando y a cada atributo.
+* En caso de que el archivo CSV seleccionado no cumpla con lo anterior Gedezmp no podrá procesarlo.
+* Dependiendo de la configuración de su navegador web, puede que deba seleccionar la carpeta en donde se descargará el archivo `*-in-batch.zmp` para poder obtenerlo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+_Ejemplo de CSV válido:_
 
-### Making a Progressive Web App
+`ca,displayName,givenName,sn`  
+`perencejo@miempresa.com 1234,'Perencejo Pérez','Perencejo','Pérez'`  
+`fulanita@miempresa.com '','Fulanita Oropeza','Fulanita','Oropeza'`  
+`sutanita@miempresa.com '123&-4','Sutanita Pedregales','Sutanita','Pedregales'`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+_Ejemplo de CSV inválido:_
 
-### Advanced Configuration
+`perencejo@miempresa.com, 1234,'Perencejo Pérez','Perencejo','Pérez'`  
+`fulanita@miempresa.com, '','Fulanita Oropeza','Fulanita','Oropeza'`  
+`sutanita@miempresa.com, '123&-4','Sutanita Pedregales','Sutanita','Pedregales'`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Hoja de Ruta
 
-### Deployment
+Eche un vistazo a las [incidencias](https://github.com/kimael-code/gedezmp-bulma/issues) para que conozca nuevas funcionalidades propuestas y/o problemas conocidos. __Siéntase libre de solicitar nuevas funcionalidades o aportar nuevas ideas__.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contribuir
 
-### `npm run build` fails to minify
+Las contribuciones hacen que la comunidad de código abierto sea un lugar tan increíble para aprender, inspirar y crear. Cualquier contribución que haga es **muy apreciada**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Realice un fork del proyecto
+2. Cree su rama feature (`git checkout -b feature/NewFeature`)
+3. Confirme sus cambios (`git commit -m 'Add NewFeature'`)
+4. Ejecute un Push a la rama (`git push origin feature/NewFeature`)
+5. Abra una petición de fusión (Merge)
+
+## Licencia
+
+Se distribuye bajo licencia `MIT`. Para más información lea el archivo `LICENSE`.
+
+## Contacto
+
+Maikel Carballo - mcarballo@tutanota.com
+
+## Agradecimientos
+
+Próximamente.
