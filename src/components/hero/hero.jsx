@@ -4,7 +4,7 @@ import logo from './assets/gedezmpLogo.png';
  * Banner tipo heroe de Bulma.
  */
 const Hero = () => (
-  <section className="hero is-primary">
+  <section className="hero is-small has-background-grey-lighter">
     <div className="hero-head">
       <header className="navbar">
         <div className="container">
@@ -18,11 +18,10 @@ const Hero = () => (
     </div>
     <div className="hero-body">
       <div className="container has-text-centered">
-        <p className="title">Generador de archivos zmp para Zimbra.</p>
+        <p className="title has-text-black">Generador de archivos zmp para Zimbra.</p>
         <p className="subtitle">
-          Para comenzar: haga clic en el botón Importar csv.
-          A continuación, busque y seleccione el archivo csv que necesita
-          exportar a zmp.
+          Es simple: haga clic en Importar CSV, busque y seleccione el
+          archivo CSV, finalmente haga clic en Exportar como ZMP.
           </p>
       </div>
     </div>
