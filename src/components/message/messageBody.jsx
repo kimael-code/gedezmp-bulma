@@ -58,8 +58,7 @@ const MessageBody = (props) => {
       return (
         <div className="message-body">
           <p>
-            Este problema se debe a que el archivo (fichero)
-            <code>{importedFileName}</code> no contiene ningún dato, es decir,
+            Este problema se debe a que el archivo (fichero) <code className="is-flex-wrap-wrap">{importedFileName}</code> no contiene ningún dato, es decir,
             está vacío.
           </p>
         </div>
@@ -68,11 +67,13 @@ const MessageBody = (props) => {
       return (
         <div className="message-body">
           <p>
-            Este problema se debe a la extensión del archivo (fichero)
-            <code className="is-flex-wrap-wrap">{importedFileName}</code>.
-            <em>
-              Gedezmp solamente funciona con archivos cuyos nombres
-              terminen en<code>.csv</code></em>.
+            Este problema se debe a la extensión del archivo (fichero) <code className="is-flex-wrap-wrap">{importedFileName}</code>.
+            <p>
+              <em>
+                Gedezmp solamente funciona con archivos cuyos nombres
+                terminen en<code>.csv</code>
+              </em>.
+            </p>
           </p>
           <p>
             Para saber más al respecto, consulte&nbsp;
