@@ -1,6 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Gedezmp",
+  "name": "Gedezmp",
+  "description": "Generador de archivos ejecutables por lote zmp para Zimbra.",
+  "dir": "ltr",
+  "lang": "es-VE",
   "icons": [
     {
       "src": "favicon.ico",
